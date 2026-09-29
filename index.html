@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Muddle Puzzle</title>
+	<link rel="stylesheet" href="style.css">
+	<script type="importmap">
+	{
+		"imports": {
+			"three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+			"three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="stage"></div>
+
+	<header class="bar">
+		<div class="brand">Muddle <span>Puzzle</span></div>
+		<div class="stats">
+			<div><label>Moves</label><b id="moves">0</b></div>
+			<div><label>Time</label><b id="time">0:00.0</b></div>
+			<div><label>Best</label><b id="best">—</b></div>
+		</div>
+	</header>
+
+	<nav class="controls">
+		<select id="size" aria-label="Puzzle size">
+			<option value="2">2×2</option>
+			<option value="3" selected>3×3</option>
+			<option value="4">4×4</option>
+			<option value="5">5×5</option>
+		</select>
+		<button id="scramble" class="primary">Scramble</button>
+		<button id="undo">Undo</button>
+		<button id="reset">Reset</button>
+		<button id="helpBtn" aria-label="How to play">?</button>
+	</nav>
+
+	<div id="toast"></div>
+
+	<div id="win" class="overlay hidden">
+		<div class="card">
+			<h2>Solved! 🎉</h2>
+			<p id="winText"></p>
+			<button id="again" class="primary">Play again</button>
+		</div>
+	</div>
+
+	<div id="help" class="overlay hidden">
+		<div class="card">
+			<h2>How to play</h2>
+			<p>Make every face of the cube a single colour.</p>
+			<ul>
+				<li><b>Drag on a sticker</b> to turn that row or column.</li>
+				<li><b>Drag on the background</b> to spin the whole cube and look around.</li>
+				<li><b>Scroll / pinch</b> to zoom.</li>
+				<li>Keys: <kbd>U</kbd> <kbd>D</kbd> <kbd>L</kbd> <kbd>R</kbd> <kbd>F</kbd> <kbd>B</kbd> turn a face clockwise, hold <kbd>Shift</kbd> to turn it anticlockwise, <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>Z</kbd> undoes.</li>
+			</ul>
+			<p class="muted">Press Scramble to start. The timer starts on your first move.</p>
+			<button id="helpClose" class="primary">Got it</button>
+		</div>
+	</div>
+
+	<script type="module" src="main.js"></script>
+</body>
+</html>
